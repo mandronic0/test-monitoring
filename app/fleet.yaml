@@ -3,7 +3,7 @@ dependsOn:
 dependsOn:  
   selector:     
     matchExpressions:     
-      - {key: fleet.cattle.io/bundle-name, operator: In, values: [crd-rms-monitoring-crd]}
+      - {key: fleet.cattle.io/bundle-name, operator: In, values: [crd-rancher-monitoring-crd]}
 # - name: rms-rancher-monitoring-crd
 helm:
   chart: "rancher-monitoring"
