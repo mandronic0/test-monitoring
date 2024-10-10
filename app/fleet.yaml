@@ -1,5 +1,4 @@
 defaultNamespace: cattle-monitoring-system
-dependsOn:
 dependsOn:  
   selector:     
     matchExpressions:     
