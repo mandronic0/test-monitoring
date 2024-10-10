@@ -1,6 +1,10 @@
 defaultNamespace: cattle-monitoring-system
 dependsOn:
-- name: rms-rancher-monitoring-crd
+dependsOn:  
+  selector:     
+    matchExpressions:     
+      - {key: fleet.cattle.io/bundle-name, operator: In, values: [rms-rancher-monitoring-crd]}
+# - name: rms-rancher-monitoring-crd
 helm:
   chart: "rancher-monitoring"
   version: 102.0.3+up40.1.2
