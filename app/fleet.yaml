@@ -11,7 +11,7 @@ dependsOn:
         bundle: rms-monitoring-crd
 helm:
   chart: "rancher-monitoring"
-  version: 102.0.3+up40.1.2
+  version: 104.1.1+up57.0.3
   releaseName: rancher-monitoring
   repo: https://charts.rancher.io
   values:
