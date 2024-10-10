@@ -7,7 +7,8 @@ defaultNamespace: cattle-monitoring-system
 dependsOn:
   - selector:
       matchLabels:
-        bundle: test-monitoring-crd
+        #bundle: test-monitoring-crd
+        bundle: rms-monitoring-crd
 helm:
   chart: "rancher-monitoring"
   version: 102.0.3+up40.1.2
