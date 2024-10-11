@@ -1,4 +1,4 @@
 defaultNamespace: cattle-monitoring-system
 helm:
-  releaseName: rke-monitoring
+  releaseName: monitoring-test8
 
