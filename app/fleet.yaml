@@ -1,6 +1,4 @@
 defaultNamespace: cattle-monitoring-system
-dependsOn:
-  - name: test-monitoring-crd
 helm:
   releaseName: rancher-monitoring
   repo: https://charts.rancher.io
