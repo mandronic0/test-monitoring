@@ -1,58 +1,18 @@
 defaultNamespace: cattle-monitoring-system
-dependsOn:  
-#  selector:     
-#    matchExpressions:     
-#      - {key: fleet.cattle.io/bundle-name, operator: In, values: [test-monitoring-crd]}
-- name: test-monitoring-crd
-#dependsOn:
-#  - selector:
-#      matchLabels:
-#        #bundle: test-monitoring-crd
-#        bundle: rms-monitoring-crd
 helm:
-  chart: "rancher-monitoring"
-  version: 104.1.1+up57.0.3
   releaseName: rancher-monitoring
   repo: https://charts.rancher.io
-  values:
-    global:
-      cattle:
-        clusterId: global.fleet.clusterLabels.management.cattle.io/cluster-name
-        clusterName: global.fleet.clusterLabels.management.cattle.io/cluster-display-name
-        rkePathPrefix: ""
-        rkeWindowsPathPrefix: ""
-        systemDefaultRegistry: "registry.rancher.com"
-        url: https://mandronic-tf-do-rke.do.support.rancher.space/
-        psp:
-          enabled: false
-      rbac:
-        create: true
-        userRoles:
-          create: true
-          aggregateToDefaultRoles: true
-        pspEnabled: false
-#    hardenedKubelet:
-#      enabled: false
-    kubelet:
-      enabled: true
- #     serviceMonitor:
- #       cAdvisor: false
-    prometheus:
-      prometheusSpec:
-        evaluationInterval: 1m
-        retention: 1d
-        retentionSize: 50GiB
-        scrapeInterval: 1m
-
+  chart: rancher-monitoring
+  version: 104.1.0+up57.0.3
 diff:
   comparePatches:
-  - apiVersion: admissionregistration.k8s.io/v1
-    kind: MutatingWebhookConfiguration
-    name: rancher-monitoring-admission
-    operations:
-    - {"op":"remove", "path":"/webhooks"}
-  - apiVersion: admissionregistration.k8s.io/v1
-    kind: ValidatingWebhookConfiguration
-    name: rancher-monitoring-admission
-    operations:
-    - {"op":"remove", "path":"/webhooks"}
+    - apiVersion: admissionregistration.k8s.io/v1
+      kind: MutatingWebhookConfiguration
+      name: rancher-monitoring-admission
+      operations:
+        - {"op":"remove", "path":"/webhooks/0/failurePolicy"}
+    - apiVersion: admissionregistration.k8s.io/v1
+      kind: ValidatingWebhookConfiguration
+      name: rancher-monitoring-admission
+      operations:
+        - {"op":"remove", "path":"/webhooks/0/failurePolicy"}
