@@ -24,4 +24,4 @@ diff:
       jsonPointers:
         - /spec/endpoints
 dependsOn:
-  - name: test-monitoring-fleet-crd
+  - name: test-monitoring-crd
